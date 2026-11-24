@@ -28,12 +28,27 @@
   --md-sys-color-on-primary:          #FFFFFF;
   --md-sys-color-text-secondary:      #727270;
 
-  --nav-pill-height: 36px;
+  /* ═══ 显示比例 ═══
+     js/scale.js 按窗口宽度算 --ui-scale = 窗口宽 / 1920：
+        · 1920 宽 → 1.0x
+        · 2550 宽 → 1.33x
+        · 3840 宽 → 2.0x
+     布局本身完全不变（照旧铺满视口），只有“字号”和“点阵尺寸”
+     乘上这个系数，所以内容永远是满屏的，不会出现留白。 */
+  --design-w: 1920;
+  --design-h: 1290;
+  --ui-scale: 1;
+
+  /* 导航胶囊高度随字号一起缩放 */
+  --nav-pill-height: calc(36px * var(--ui-scale));
   --m3-easing:   cubic-bezier(0.2, 0, 0, 1);
   --m3-duration: 240ms;
 
-  --dot-size: 8px;
-  --dot-gap: 10px;
+  /* 点阵：基准值 × 缩放系数，基准值供 js/left.js 读取后自行计算 */
+  --dot-base-size: 8px;
+  --dot-base-gap:  10px;
+  --dot-size: calc(var(--dot-base-size) * var(--ui-scale));
+  --dot-gap:  calc(var(--dot-base-gap)  * var(--ui-scale));
   --dot-columns: 7;
   --dot-rows: 5;
 
@@ -47,10 +62,11 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* 布局保持原样：始终铺满整个视口，不整体缩放、不留黑边。 */
 html, body {
   width: 100vw; height: 100vh; overflow: hidden;
   font-family: var(--font-stack);
-  font-size: 13px;
+  font-size: calc(13px * var(--ui-scale));
   color: var(--md-sys-color-on-surface);
   -webkit-font-smoothing: antialiased;
   user-select: none;
@@ -82,7 +98,7 @@ html, body {
 
 .panel-title {
   font-family: var(--font-stack);
-  font-size: 18px; font-weight: 600;
+  font-size: calc(18px * var(--ui-scale)); font-weight: 600;
   color: var(--md-sys-color-primary);
   margin-bottom: var(--space-3);
 }
@@ -92,7 +108,7 @@ html, body {
 
 .section-label {
   font-family: var(--font-stack);
-  font-size: 12px; font-weight: 600;
+  font-size: calc(12px * var(--ui-scale)); font-weight: 600;
   color: var(--md-sys-color-text-secondary);
   text-transform: uppercase; letter-spacing: 0.04em;
   margin-bottom: var(--space-1);
@@ -129,7 +145,7 @@ html, body {
   all: unset;
   padding: var(--space-1) var(--space-2); border-radius: 999px;
   font-family: var(--font-stack);
-  font-size: 13px; font-weight: 500;
+  font-size: calc(13px * var(--ui-scale)); font-weight: 500;
   color: var(--md-sys-color-text-secondary);
   background: transparent; cursor: pointer;
   transition: background-color var(--m3-duration) var(--m3-easing),
@@ -152,7 +168,7 @@ html, body {
   background: var(--md-sys-color-background);
   color: var(--md-sys-color-primary);
   font-family: var(--font-stack);
-  font-size: 36px;
+  font-size: calc(36px * var(--ui-scale));
   font-weight: 650;
   align-items: center;
   justify-content: center;
@@ -163,7 +179,7 @@ html, body {
 /* ═══ 响应式断点 ═══════════════════════════════════════════ */
 @media (max-width: 768px) {
   .nav-bar { height: calc(var(--nav-pill-height) + var(--space-3)); }
-  .nav-pill { font-size: 13px; padding: 0 var(--space-2); }
+  .nav-pill { font-size: calc(13px * var(--ui-scale)); padding: 0 var(--space-2); }
   .narrow-overlay { display: flex; }
 
   .home-content {
@@ -174,7 +190,7 @@ html, body {
   .main-area { display: flex; flex-direction: column; }
   .home-left { position: relative; height: 80px; overflow: hidden; }
   .hello-text { position: absolute; left: var(--space-2); bottom: var(--space-2); }
-  .hello-text span { font-size: 36px; }
+  .hello-text span { font-size: calc(36px * var(--ui-scale)); }
   .home-dots { display: none; }
   .home-right { flex: none; gap: var(--space-1); padding: var(--space-2); }
   .widget { flex: none; }
@@ -185,7 +201,7 @@ html, body {
 
 @media (max-width: 480px) {
   .nav-bar { height: calc(var(--nav-pill-height) + var(--space-3)); }
-  .nav-pill { font-size: 12px; padding: 0 var(--space-1); }
+  .nav-pill { font-size: calc(12px * var(--ui-scale)); padding: 0 var(--space-1); }
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -238,7 +254,7 @@ html, body {
 .scroll-line {
   white-space: normal;
   font-family: var(--font-stack);
-  font-size: 60px;
+  font-size: calc(60px * var(--ui-scale));
   font-weight: 400;
   line-height: 1.35;
   color: var(--md-sys-color-hello-text);

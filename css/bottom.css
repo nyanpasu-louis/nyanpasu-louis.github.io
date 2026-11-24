@@ -36,7 +36,7 @@
   padding: 0 var(--space-2);                                /* 左右内边距 */
   border-radius: 999px;
   font-family: var(--font-stack);
-  font-size: 16px;                                         /* 按钮字号 */
+  font-size: calc(16px * var(--ui-scale));                                         /* 按钮字号 */
   font-weight: 550; line-height: 1; letter-spacing: 0.01em;
   color: var(--md-sys-color-primary);
   background: transparent;

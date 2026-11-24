@@ -58,7 +58,7 @@
   /* ── Intro 欢迎语：自定义三词轮播 ────────────────────── */
   const introGreetings = [
     { text: 'Jr.Louis',       direction: 'ltr' },
-    { text: 'Nyanpasu Louis',  direction: 'ltr' },
+    { text: 'Nympasu Louis',  direction: 'ltr' },
     { text: '与盼',   direction: 'ltr' },
   ];
   let introLangIndex = 0;
@@ -92,10 +92,12 @@
     }, 400);
   }, 1250);
 
-  /* ── 动态圆点布局 ────────────────────────────────────── */
+  /* ── 动态圆点布局 ──────────────────────────────────────
+     布局照旧（相对视口计算），只是点阵尺寸要乘上显示比例，
+     与 CSS 里 --dot-size / --dot-gap 的 calc() 保持同一套数值。
+     ────────────────────────────────────────────────────── */
   function layoutHome() {
     const vw = window.innerWidth;
-    const vh = window.innerHeight;
 
     /* 根据父容器 .visible 类判断当前活跃的是 Home 还是 Intro */
     const introContent = document.getElementById('intro-content');
@@ -112,10 +114,12 @@
     const helloEndX   = helloRect.right;
     const centerLineX = vw / 2;
 
-    /* 圆点网格常数 — 从 CSS 自定义属性读取 */
-    const cs = getComputedStyle(root);
-    const DOT_SIZE      = parseFloat(cs.getPropertyValue('--dot-size'));
-    const DOT_GAP       = parseFloat(cs.getPropertyValue('--dot-gap'));
+    /* 圆点网格常数 — 从 CSS 自定义属性读取基准值，再乘显示比例
+       （--dot-size 已经是 calc() 表达式，无法直接 parseFloat，故读 -base-*） */
+    const cs    = getComputedStyle(root);
+    const SCALE = (window.__uiScale > 0) ? window.__uiScale : 1;
+    const DOT_SIZE      = parseFloat(cs.getPropertyValue('--dot-base-size')) * SCALE;
+    const DOT_GAP       = parseFloat(cs.getPropertyValue('--dot-base-gap'))  * SCALE;
     const dotUnit       = DOT_SIZE + DOT_GAP;
     const minTextDotGap = Math.round(DOT_SIZE*1.2);
 

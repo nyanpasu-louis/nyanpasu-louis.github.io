@@ -66,5 +66,6 @@
   }
 
   syncLayout();
+  /* 缩放比例变化会改变字号 → 行高，需要重新对齐 */
   window.addEventListener('resize', syncLayout);
 })();

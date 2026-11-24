@@ -33,7 +33,7 @@
   display: grid;
   grid-template-columns: repeat(14, 1fr);
   grid-template-rows: repeat(12, 1fr);
-  gap: 2px;
+  gap: calc(2px * var(--ui-scale));
   flex: 1;
   min-height: 0;
   transition: opacity 500ms var(--m3-easing);

@@ -70,7 +70,7 @@
 
 /* 平台名 — 粗体 */
 .capsule-platform {
-  font-size: var(--plat-size, 22px);
+  font-size: calc(var(--plat-size, 22px) * var(--ui-scale));
   font-weight: 650;
   line-height: 1.2;
   color: var(--md-sys-color-primary);
@@ -78,7 +78,7 @@
 
 /* 昵称 — 小字正常体 */
 .capsule-nick {
-  font-size: var(--nick-size, 18px);
+  font-size: calc(var(--nick-size, 18px) * var(--ui-scale));
   font-weight: 400;
   line-height: 1.2;
   color: var(--md-sys-color-text-secondary);
@@ -128,7 +128,7 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #fff;
-  font-size: 22px;
+  font-size: calc(22px * var(--ui-scale));
   line-height: 1;
   cursor: pointer;
   display: flex;
