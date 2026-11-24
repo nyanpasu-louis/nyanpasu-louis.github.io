@@ -4,14 +4,14 @@
 
 @font-face {
   font-family: 'Google Sans';
-  src: url('res/googlesans.ttf') format('truetype');
+  src: url('../res/GoogleSans.ttf') format('truetype');
   font-weight: 400 700;
   font-display: swap;
 }
 @font-face {
   font-family: 'Noto Sans SC';
-  src: url('res/notosans.ttf') format('truetype');
-  font-weight: 400 700;
+  src: url('../res/NotoSans.ttf') format('truetype');
+  font-weight: 100 900;
   font-display: swap;
 }
 
