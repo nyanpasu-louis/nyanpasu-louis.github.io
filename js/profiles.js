@@ -9,7 +9,7 @@
     { platform: 'Paradox Mods',nick: 'JaronLouis',        url: 'https://mods.paradoxplaza.com/authors/JaronLouis' },
     { platform: '油管',         nick: 'JaronLouis',        url: 'https://www.youtube.com/@JaronLouis-v5u' },
     { platform: '网易云',       nick: '-与盼-',             url: 'https://y.music.163.com/m/user?id=3293246882' },
-    { platform: 'Github',      nick: '与盼 nympasu-louis', url: 'https://github.com/nyanpasu-louis' },
+    { platform: 'Github',      nick: '与盼 nyanpasu-louis', url: 'https://github.com/nyanpasu-louis' },
     { platform: 'LOFTER',      nick: '与盼',               url: 'https://jrlouis.lofter.com' },
     { platform: '微信公众号',   nick: 'Jr.Louis',          image: 'res/subs.jpg' },
   ];
