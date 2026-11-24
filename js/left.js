@@ -58,7 +58,7 @@
   /* ── Intro 欢迎语：自定义三词轮播 ────────────────────── */
   const introGreetings = [
     { text: 'Jr.Louis',       direction: 'ltr' },
-    { text: 'Nympasu Louis',  direction: 'ltr' },
+    { text: 'Nyanpasu Louis',  direction: 'ltr' },
     { text: '与盼',   direction: 'ltr' },
   ];
   let introLangIndex = 0;
